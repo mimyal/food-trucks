@@ -4,32 +4,24 @@ class FoodTrucksViewer
 
   def get_food_trucks(day, time_of_day)
     raise(ArgumentError, 'Day and Time for Food Trucks must be known') unless day && time_of_day
-    vendors = FoodTrucksWrapper.get_food_trucks(day, time_of_day)
+    vendors = FoodTrucksWrapper.list_food_trucks(day, time_of_day)
 
-    response = []
-    vendors.each do |vendor|
-      if is_open?(vendor)
-        response << vendor
-      end
-    end
-    response.sort_by! { |vendor| vendor[:name] }
-    return response
+    vendors.sort_by! { |vendor| vendor[:name] }
   end
 
-  # Will return the an empty array, once all have been shown
-  def view_food_trucks(vendors)
-    n = 0
-    while !vendors.empty? && vendors.length > n
-      puts 'Do you want to view food trucks?'
+  def view_food_trucks(day = Time.now.strftime("%u"), time_of_day = Time.now.strftime("%H:%M"))
+    vendors = get_food_trucks(day, time_of_day)
+    item_num = 0
+    more = nil
+    while !vendors.empty? && vendors.length > item_num
+      puts "Do you want to view #{more}food trucks?"
       if get_action == 'y'
-        # First code view ONE
-        # View ten at the time
-        vendors[n...n+10].each do |vendor|
+        vendors[item_num...item_num+10].each do |vendor|
           show_food_truck(vendor)
         end
-        n += 10
+        item_num += 10
       else
-        return 'Thank you for viewing the food trucks'
+        return 'Thank you for using the food trucks application'
       end
       more = 'more '
     end #while
@@ -45,13 +37,4 @@ class FoodTrucksViewer
   def show_food_truck(vendor)
     puts "#{vendor[:name].ljust(25)} #{vendor[:address]}"
   end
-
-  def is_open?(vendor)
-    vendor[:open]
-  end
-
-  def alphabetic_response(vendors)
-    vendors.sort_by { |vendor| vendor[:name] }
-  end
-
 end

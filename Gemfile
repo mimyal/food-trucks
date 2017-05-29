@@ -5,4 +5,4 @@ source "https://github.com/socrata/soda-ruby"
 gem "minitest"
 gem 'mocha'
 gem 'soda'
-gem 'soda-ruby'#, :require => 'soda' # requires ruby 2.0.0 or higher
+gem 'soda-ruby', :require => 'soda' # requires ruby 2.0.0 or higher
