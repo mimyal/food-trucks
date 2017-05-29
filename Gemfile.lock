@@ -1,10 +1,37 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://github.com/socrata/soda-ruby/
   specs:
+    builder (3.2.3)
+    commonwatir (1.8.0)
+      user-choices
+    ffi (1.9.18)
+    firewatir (1.8.0)
+      commonwatir (= 1.8.0)
+    hashie (3.5.5)
+    hoe (3.16.0)
+      rake (>= 0.8, < 13.0)
     metaclass (0.0.4)
     minitest (5.10.2)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
+    multipart-post (2.0.0)
+    rake (12.0.0)
+    s4t-utils (1.0.4)
+      hoe (>= 1.3.0)
+    soda (1.4.7)
+      firewatir (= 1.8.0)
+    soda-ruby (0.2.24)
+      hashie (~> 3.4, >= 3.4.6)
+      multipart-post (~> 2.0.0)
+      sys-uname (~> 1.0.2)
+    sys-uname (1.0.3)
+      ffi (>= 1.0.0)
+    user-choices (1.1.6.1)
+      builder (>= 2.1.2)
+      s4t-utils (>= 1.0.3)
+      xml-simple (>= 1.0.11)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
@@ -12,6 +39,8 @@ PLATFORMS
 DEPENDENCIES
   minitest
   mocha
+  soda
+  soda-ruby
 
 BUNDLED WITH
    1.13.6

@@ -11,3 +11,5 @@ This application will list currently open food trucks in San Fransisco.
 
 ## How to run it
 This application is developed through TDD in Ruby 2.3.1 on a MacBook.
+## Limitations
+Timezone 
